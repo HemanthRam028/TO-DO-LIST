@@ -1,0 +1,378 @@
+Global Styles
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f6f9;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
+  overflow-x: hidden;
+  height: 100vh;  /* Prevent horizontal scroll */
+}
+
+.app {
+  width: 100%;
+  max-width: 100%; /* Ensure it does not exceed screen width */
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  body, .app {
+    padding: 0px;
+  }
+}
+
+/* Dark Mode Styling */
+.app.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+  left : 90%
+}
+
+.app.dark h1,
+.app.dark .task h2 {
+  color: #ffffff;
+}
+
+.app.dark .task {
+  background-color: #333;
+  color: #e0e0e0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.app.dark .task.completed {
+  background-color: #2c2c2c;
+}
+
+.app.dark .task button,
+.app.dark button.switch-mode {
+  background-color: #444;
+  color: #e0e0e0;
+  border: 1px solid #555;
+}
+
+.app.dark .task button:hover,
+.app.dark button.switch-mode:hover {
+  background-color: #555;
+}
+
+.app.dark .task button.edit {
+  background-color: #ff9800;
+}
+
+.app.dark .task button.edit:hover {
+  background-color: #ff5722;
+}
+
+.app.dark .filters button.active,
+.app.dark .sorting-options button.active {
+  background-color: #6200ea;
+}
+
+.app.dark .filters button:hover,
+.app.dark .sorting-options button:hover {
+  background-color: #3700b3;
+}
+
+/* Header */
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  transition: color 0.3s ease;
+}
+
+.app.dark h1 {
+  color: #ffffff;
+}
+
+/* Dark Mode and Light Mode Toggle */
+button.switch-mode {
+  background-color: #4caf50;
+  color: #fff;
+  margin-bottom: 20px;
+  width: 100%;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+button.switch-mode i {
+  margin-right: 8px;
+}
+
+button.switch-mode:hover {
+  background-color: #45a049;
+}
+
+/* Task Form */
+.task-form {
+  margin-bottom: 10px;
+  background-color: #fafafa;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.app.dark .task-form {
+  background-color: #333;
+  color: #e0e0e0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.task-form input,
+.task-form textarea,
+.task-form select {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.app.dark .task-form input,
+.app.dark .task-form textarea,
+.app.dark .task-form select {
+  border: 1px solid #444;
+  background-color: #555;
+  color: #e0e0e0;
+}
+
+.task-form textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+/* Task List */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex-grow: 1; /* Task list expands to take up remaining space */
+  margin-bottom: 0; /* No extra margin at the bottom */
+  overflow-y: auto; /* Allows scrolling within the task list if needed */
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task.completed {
+  background-color: #c8e6c9;
+}
+
+.task h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.task p {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+.task button {
+  background-color: #f44336;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.task button i {
+  margin-right: 6px;
+}
+
+.task button:hover {
+  background-color: #d32f2f;
+}
+
+.task button.edit {
+  background-color: #ff9800;
+}
+
+.task button.edit:hover {
+  background-color: #f57c00;
+}
+
+/* Filters and Sorting */
+.filters,
+.sorting-options {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.filters button,
+.sorting-options button {
+  background-color: #8bc34a;
+  color: white;
+  border-radius: 8px;
+  padding: 12px 20px;
+  margin: 0 10px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.app.dark .filters button,
+.app.dark .sorting-options button {
+  background-color: #6200ea;
+}
+
+.app.dark .filters button:hover,
+.app.dark .sorting-options button:hover {
+  background-color: #3700b3;
+}
+
+
+/* Task Form Buttons */
+button.add-task,
+button.update-task {
+  width: 100%;
+  background-color: #2196f3;
+  color: #fff;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+button.add-task:hover,
+button.update-task:hover {
+  background-color: #1976d2;
+}
+
+/* Dark Mode Styling for Completed Tasks */
+.app.dark .task.completed {
+  background-color: #2c6b2f; /* Dark green for completed task */
+  color: #b3e2b3; /* Light green text color */
+  text-decoration: line-through; /* Line-through text to indicate completion */
+}
+
+.app.dark .task.completed h2 {
+  color: #b3e2b3; /* Light green for task title */
+}
+
+.app.dark .task.completed button {
+  background-color: #4caf50; /* Green button for completed tasks */
+  color: #ffffff;
+}
+
+.app.dark .task.completed button:hover {
+  background-color: #388e3c; /* Slightly darker green when hovering */
+}
+
+/* Task Button (Not Completed) */
+.app.dark .task button {
+  background-color: #f44336; /* Red button for incomplete tasks */
+  color: white;
+}
+
+.app.dark .task button:hover {
+  background-color: #d32f2f;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .app {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .task-form {
+    padding: 15px;
+  }
+
+  .task-form input,
+  .task-form textarea,
+  .task-form select {
+    font-size: 0.9rem;
+  }
+
+  .filters button,
+  .sorting-options button {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+
+  .task button {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+
+  .task-list {
+    gap: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .app {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .task-form {
+    padding: 10px;
+  }
+
+  .task-form input,
+  .task-form textarea,
+  .task-form select {
+    font-size: 0.8rem;
+  }
+
+  .filters button,
+  .sorting-options button {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+
+  .task button {
+    padding: 5px 8px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Material Icons */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
