@@ -1,30 +1,29 @@
-
 body {
-  height: 100%;
+  height: 50%;
   display: flex;
   flex-direction: column;
   font-family: 'Arial', sans-serif;
-  background-color: #f4f6f9;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   transition: background-color 0.3s ease;
   overflow-x: hidden;
-  height: 100vh;  /* Prevent horizontal scroll */
 }
 
 .app {
+  flex: 1; /* This makes .app take the remaining space */
   width: 100%;
   max-width: 100%; /* Ensure it does not exceed screen width */
   margin: 0 auto;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: #fcf7f7;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   box-sizing: border-box;
   overflow: hidden;
 }
+
 
 .glowing-text {
     text-shadow: 0 0 5px #ecda71, 0 0 10px #e3f443, 0 0 15px #f89d1f;
@@ -36,98 +35,31 @@ body {
   }
 }
 
-.button-85 {
-    padding: 0.6em 2em;
-    border: none;
-    outline: none;
-    color: rgb(255, 255, 255);
-    background: #111;
-    cursor: pointer;
-    position: relative;
-    z-index: 0;
-    border-radius: 10px;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-  }
-
-  .button-85:before {
-    content: "";
-    background: linear-gradient(
-      45deg,
-      #ff0000,
-      #ff7300,
-      #fffb00,
-      #48ff00,
-      #00ffd5,
-      #002bff,
-      #7a00ff,
-      #ff00c8,
-      #ff0000
-    );
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    background-size: 400%;
-    z-index: -1;
-    filter: blur(5px);
-    -webkit-filter: blur(5px);
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    animation: glowing-button-85 20s linear infinite;
-    transition: opacity 0.3s ease-in-out;
-    border-radius: 10px;
-  }
-
-  @keyframes glowing-button-85 {
-    0% {
-      background-position: 0 0;
-    }
-    50% {
-      background-position: 400% 0;
-    }
-    100% {
-      background-position: 0 0;
-    }
-  }
-
-  .button-85:after {
-    z-index: -1;
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #222;
-    left: 0;
-    top: 0;
-    border-radius: 10px;
-  }
-/* Center the buttons */
-.button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  gap: 10px; /* Optional, for spacing between the buttons */
+/* Hover effect for scaling */
+.button-85:hover {
+  transform: scale(1.05);
 }
-/* 
-/* Style for button-85 */
-/* .button-86 {
+
+/* Style for the button */
+.button-85 {
   padding: 0.6em 2em;
   border: none;
   outline: none;
   color: rgb(255, 255, 255);
   background: #111;
   cursor: pointer;
-  position: relative;
-  z-index: 0;
+  position: absolute; 
+  top: 10px; /* Position 10px from the top */
+  right: 10px; /* Position 10px from the right */
+  z-index: 10;
   border-radius: 10px;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
 }
 
-.button-86:before {
+/* Glowing effect for the button */
+.button-85:before {
   content: "";
   background: linear-gradient(
     45deg,
@@ -155,6 +87,7 @@ body {
   border-radius: 10px;
 }
 
+/* Glowing animation for the button */
 @keyframes glowing-button-85 {
   0% {
     background-position: 0 0;
@@ -167,148 +100,8 @@ body {
   }
 }
 
-.button-86:after {
-  z-index: -1;
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #222;
-  left: 0;
-  top: 0;
-  border-radius: 10px;
-} */
- */
-
-/* Button 87 Styles */
-/* .button-87 {
-  padding: 0.6em 2em;
-  border: none;
-  outline: none;
-  color: rgb(255, 255, 255);
-  background: #111;
-  cursor: pointer;
-  position: relative;
-  z-index: 0;
-  border-radius: 10px;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.button-87:before {
-  content: "";
-  background: linear-gradient(
-    45deg,
-    #ff0000,
-    #ff7300,
-    #fffb00,
-    #48ff00,
-    #00ffd5,
-    #002bff,
-    #7a00ff,
-    #ff00c8,
-    #ff0000
-  );
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  background-size: 400%;
-  z-index: -1;
-  filter: blur(5px);
-  -webkit-filter: blur(5px);
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  animation: glowing-button-87 20s linear infinite;
-  transition: opacity 0.3s ease-in-out;
-  border-radius: 10px;
-}
-
-@keyframes glowing-button-87 {
-  0% {
-    background-position: 0 0;
-  }
-  50% {
-    background-position: 400% 0;
-  }
-  100% {
-    background-position: 0 0;
-  }
-}
-
-.button-87:after {
-  z-index: -1;
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #222;
-  left: 0;
-  top: 0;
-  border-radius: 10px;
-} */
-
-body.dark-mode {
-  background: #111;
-  color: white;
-}
-/* Button 88 Styles */
-.button-88 {
-  padding: 0.6em 2em;
-  border: none;
-  outline: none;
-  color: rgb(255, 255, 255);
-  background: #111;
-  cursor: pointer;
-  position: relative;
-  z-index: 0;
-  border-radius: 10px;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.button-88:before {
-  content: "";
-  background: linear-gradient(
-    45deg,
-    #ff0000,
-    #ff7300,
-    #fffb00,
-    #48ff00,
-    #00ffd5,
-    #002bff,
-    #7a00ff,
-    #ff00c8,
-    #ff0000
-  );
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  background-size: 400%;
-  z-index: -1;
-  filter: blur(5px);
-  -webkit-filter: blur(5px);
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  animation: glowing-button-88 20s linear infinite;
-  transition: opacity 0.3s ease-in-out;
-  border-radius: 10px;
-}
-
-@keyframes glowing-button-88 {
-  0% {
-    background-position: 0 0;
-  }
-  50% {
-    background-position: 400% 0;
-  }
-  100% {
-    background-position: 0 0;
-  }
-}
-
-.button-88:after {
+/* Background effect for the button */
+.button-85:after {
   z-index: -1;
   content: "";
   position: absolute;
@@ -320,6 +113,14 @@ body.dark-mode {
   border-radius: 10px;
 }
 
+/* Center the buttons */
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 20px; /* Optional, for spacing between the buttons */
+}
 /* Dark Mode Styling */
 .app.dark {
   background-color: #121212;
@@ -377,7 +178,7 @@ h1 {
   font-size: 2.5rem;
   text-align: center;
   color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   transition: color 0.3s ease;
 }
 
@@ -411,7 +212,8 @@ button.switch-mode:hover {
 
 /* Task Form */
 .task-form {
-  margin-bottom: 10px;
+  max-width: 100%;;
+  margin-bottom: 30px;
   background-color: #fafafa;
   padding: 50px;
   border-radius: 10px;
@@ -421,14 +223,14 @@ button.switch-mode:hover {
 
 .app.dark .task-form {
   background-color: #333;
-  color: #e0e0e0;
+  color: #eee6e6;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 .task-form input,
 .task-form textarea,
 .task-form select {
-  width: 100%;
+  width: 97%;
   padding: 8px;
   margin: 8px 0;
   border-radius: 8px;
@@ -445,7 +247,7 @@ button.switch-mode:hover {
 }
 
 .task-form textarea {
-  height: 120px;
+  height: 250px;
   resize: vertical;
 }
 
@@ -453,7 +255,7 @@ button.switch-mode:hover {
 .task-list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1px;
   flex-grow: 1; /* Task list expands to take up remaining space */
   margin-bottom: 0; /* No extra margin at the bottom */
   overflow-y: auto; /* Allows scrolling within the task list if needed */
@@ -594,7 +396,7 @@ button.update-task:hover {
 }
 
 /* Responsive Styles */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 868px) {
   .app {
     padding: 15px;
   }
@@ -662,3 +464,5 @@ button.update-task:hover {
 
 /* Material Icons */
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+
