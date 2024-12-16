@@ -1,32 +1,30 @@
-
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 import Filter from './components/Filters';
 import Sorting from './components/SortingOptions';
-import { setDarkMode, setTasks } from './redux/actions'; // Import setTasks
+import { setDarkMode, setTasks } from './redux/actions';
 import './App.css';
 
 function App() {
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.darkMode);
+
   const [sortBy, setSortBy] = useState('Priority');
   const [loading, setLoading] = useState(true);
 
-  // Load dark mode and tasks on first render
   useEffect(() => {
-    // Load dark mode preference from localStorage
     const savedDarkMode = JSON.parse(localStorage.getItem('darkMode'));
     if (savedDarkMode !== null) {
       dispatch(setDarkMode(savedDarkMode));
     }
+    setLoading(false);
 
-    // Load tasks from localStorage and add them to Redux store
+    // Load tasks from localStorage and add them to Redux state
     const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
     dispatch(setTasks(savedTasks));
 
-    setLoading(false);
   }, [dispatch]);
 
   const handleDarkModeToggle = () => {
@@ -36,7 +34,7 @@ function App() {
   };
 
   if (loading) {
-    return null; // Prevent rendering before tasks and dark mode are loaded
+    return null;
   }
 
   return (
