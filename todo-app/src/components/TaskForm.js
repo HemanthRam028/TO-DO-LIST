@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTask, editTask } from '../redux/actions';
-import "./TaskForm.css"
+import { addTask, editTask, setTasks } from '../redux/actions';
+import "./TaskForm.css";
 
 const TaskForm = () => {
   const dispatch = useDispatch();
   const currentTask = useSelector((state) => state.currentTask);
+  const tasks = useSelector((state) => state.tasks);
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -13,6 +14,20 @@ const TaskForm = () => {
   const [priority, setPriority] = useState('Medium');
   const [errorMessage, setErrorMessage] = useState('');
 
+  // Load tasks from localStorage when the component first loads
+  useEffect(() => {
+    const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    dispatch(setTasks(savedTasks)); // Set tasks to Redux store
+  }, [dispatch]);
+
+  // Save tasks to localStorage whenever they change
+  useEffect(() => {
+    if (tasks.length > 0) {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+  }, [tasks]);
+
+  // Populate form if editing an existing task
   useEffect(() => {
     if (currentTask) {
       setTitle(currentTask.title);
@@ -28,10 +43,17 @@ const TaskForm = () => {
       return;
     }
 
+    let updatedTasks = [];
+
     if (currentTask) {
+      // Update existing task
       const updatedTask = { ...currentTask, title, description, dueDate, priority };
       dispatch(editTask(updatedTask));
+      updatedTasks = tasks.map((task) =>
+        task.id === currentTask.id ? updatedTask : task
+      );
     } else {
+      // Add new task
       const newTask = {
         id: Date.now(),
         title,
@@ -41,10 +63,17 @@ const TaskForm = () => {
         completed: false,
       };
       dispatch(addTask(newTask));
+      updatedTasks = [...tasks, newTask];
     }
+
+    // Save tasks to localStorage after every change
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+
+    // Reset form fields
     setTitle('');
     setDescription('');
     setDueDate('');
+    setPriority('Medium');
     setErrorMessage('');
   };
 

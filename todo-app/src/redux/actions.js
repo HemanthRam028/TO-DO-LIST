@@ -1,11 +1,14 @@
+// Action types
 export const ADD_TASK = 'ADD_TASK';
 export const EDIT_TASK = 'EDIT_TASK';
 export const DELETE_TASK = 'DELETE_TASK';
 export const TOGGLE_COMPLETE = 'TOGGLE_COMPLETE';
 export const SET_FILTER = 'SET_FILTER';
 export const SET_DARK_MODE = 'SET_DARK_MODE';
+export const SET_TASKS = 'SET_TASKS';
 export const SET_CURRENT_TASK = 'SET_CURRENT_TASK';
 
+// Action creators
 export const addTask = (task) => ({
   type: ADD_TASK,
   payload: task,
@@ -34,6 +37,11 @@ export const setFilter = (filter) => ({
 export const setDarkMode = (darkMode) => ({
   type: SET_DARK_MODE,
   payload: darkMode,
+});
+
+export const setTasks = (tasks) => ({
+  type: SET_TASKS,
+  payload: tasks,
 });
 
 export const setCurrentTask = (task) => ({

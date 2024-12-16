@@ -248,7 +248,10 @@ body {
   border-radius: 10px;
 } */
 
-
+body.dark-mode {
+  background: #111;
+  color: white;
+}
 /* Button 88 Styles */
 .button-88 {
   padding: 0.6em 2em;

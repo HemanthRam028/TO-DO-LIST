@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleComplete, deleteTask, setCurrentTask } from '../redux/actions';
+// import './TaskList.css'
 
 const TaskList = ({ sortBy }) => {
   const dispatch = useDispatch();
