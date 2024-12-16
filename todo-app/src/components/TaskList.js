@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleComplete, deleteTask, setCurrentTask } from '../redux/actions';
-// import './TaskList.css'
+import './TaskList.css';
 
 const TaskList = ({ sortBy }) => {
   const dispatch = useDispatch();
@@ -38,11 +38,17 @@ const TaskList = ({ sortBy }) => {
             <p>Priority: {task.priority}</p>
           </div>
           <div className="task-actions">
-            <button onClick={() => dispatch(toggleComplete(task.id))}>
-              {task.completed ? 'Completed' : 'Complete'}
+            <button className="button-90" onClick={() => dispatch(toggleComplete(task.id))}>
+              <span className="material-icons">
+                {task.completed ? 'check_circle' : 'radio_button_unchecked'}
+              </span>
             </button>
-            <button onClick={() => dispatch(deleteTask(task.id))}>Delete</button>
-            <button onClick={() => handleEditTask(task)}>Edit</button>
+            <button className="button-90" onClick={() => dispatch(deleteTask(task.id))}>
+              <span className="material-icons">delete</span>
+            </button>
+            <button className="button-90" onClick={() => handleEditTask(task)}>
+              <span className="material-icons">edit</span>
+            </button>
           </div>
         </div>
       ))}
